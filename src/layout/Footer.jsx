@@ -1,10 +1,21 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import { matchPath } from "react-router-dom";
 
 function Footer() {
+  const location = useLocation();
   const footerYear = new Date().getFullYear();
 
+  if (
+    matchPath("/user/quiz/:type", location.pathname) ||
+    location.pathname === "/sign-up" ||
+    location.pathname === "/login"
+  ) {
+    return null;
+  }
+
   return (
-    <footer className="bg-base-200  ">
+    <footer className="bg-base-200 ">
       <div className="container p-10 mx-auto footer text-base-content">
         <aside>
           <svg
